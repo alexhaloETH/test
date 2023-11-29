@@ -16,6 +16,7 @@ export const RulesPage: React.FC<RulesPageProps> = ({ setMenuState }) =>
 
     return (
         <div className="rules-page-container">
+            <img className="page-img" src="./assets/Page_Bg/RULES_PAGE_BG.png" alt="testPic" />
         </div>
     )
 }

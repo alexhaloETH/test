@@ -66,7 +66,7 @@ export const BuyRevenantPage: React.FC<BuyRevenantPageProps> = ({ setMenuState }
         //       await create_revenant(createRevProps);
         // }
 
-        setMenuState(PrepPhaseStages.WAIT_TRANSACTION);
+        //setMenuState(PrepPhaseStages.WAIT_TRANSACTION);
       };
 
     // const ownReveants = useEntityQuery([HasValue(contractComponents.Outpost, { owner: account.address })]);

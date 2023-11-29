@@ -1,10 +1,19 @@
 .rules-page-container {
   width: 100%;
   height: 100%;
-  
-  background-image: url("assets/Page_Bg/RULES_PAGE_BG.png");
-  background-position:  center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
+  color: white;
 }
+
+.page-img {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  filter: brightness(var(--brightness)); /* Adjust the percentage to make it darker or lighter */
+}
+
 

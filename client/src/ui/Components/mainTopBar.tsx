@@ -134,8 +134,7 @@ export const TopBarComponent = () => {
                     </div>
 
                     {isloggedIn ? 
-                        <h3 onMouseDown={() => {}}> <img src="LOGO_WHITE.png" className="chain-logo" style={{fontSize:"1cqw"}}></img>{truncateString(userAddress, 5)} 
-                            
+                        <h3 onMouseDown={() => {}}> <img src="assets/LOGO_WHITE.png" className="chain-logo" style={{fontSize:"1cqw"}}></img>{truncateString(userAddress, 5)} 
                     </h3> : <button>Log in now</button>}
                     
                 </ClickWrapper>

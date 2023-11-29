@@ -134,7 +134,9 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState}) => {
 
   return (
     <div className="profile-page-container">
+      
       <img className="page-img" src="./assets/Page_Bg/PROFILE_PAGE_BG.png" alt="testPic" />
+
       <div className="title-section">
         <h2>PROFILE</h2>
         <div className="title-cart-section">
