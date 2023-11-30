@@ -3,17 +3,20 @@
   height: 100%;
   position: relative;
   color: white;
+
+  background-color: black;
+  overflow-y:auto;
 }
 
 .page-img {
   width: 100%;
   height: 100%;
-
-  position: absolute;
+  display: block;
+  /* position: absolute; */
   top: 0;
   left: 0;
 
-  filter: brightness(var(--brightness)); /* Adjust the percentage to make it darker or lighter */
+  filter: brightness(var(--brightness)); 
 }
 
 .title-section {
@@ -25,6 +28,7 @@
   align-items: center;
 
   position: relative;
+
 }
 
 .title-cart-section {
@@ -44,6 +48,8 @@
 
   gap: 10px;
   font-family: OL;
+
+  font-size: 0.7cqw;
 }
 
 .title-cart-section h3 {
@@ -75,6 +81,7 @@
 .info-section {
   width: 100%;
   height: 90%;
+  position: relative;
 }
 
 .table-section {
@@ -116,6 +123,7 @@
 .table-title-container h2 {
   flex: 1;
   text-align: center;
+  font-size: 1.1cqw;
 }
 
 .table-items-container {
@@ -141,10 +149,11 @@
 .item-container-profile h2 {
   flex: 1;
   text-align: center;
+  font-size: 1cqw;
 }
 
 .item-button {
-  flex: 1.5;
+  flex: 1;
 }
 
 .button-style-profile {

@@ -4,7 +4,7 @@ import "./PagesStyles/ProfilePageStyles.css";
 
 import { MenuState } from "./gamePhaseManager";
 
-import { HasValue, getComponentValueStrict,getComponentValue } from "@latticexyz/recs";
+import { HasValue, getComponentValueStrict, getComponentValue } from "@latticexyz/recs";
 
 import { useEntityQuery } from "@latticexyz/react";
 
@@ -21,7 +21,7 @@ interface ProfilePageProps {
   setMenuState?: React.Dispatch<React.SetStateAction<MenuState>>;
 }
 
-export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState}) => {
+export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState }) => {
   // const closePage = () => {
   //   setMenuState(MenuState.NONE);
   // };
@@ -29,121 +29,123 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState}) => {
   const [text, setText] = useState("");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-//   const {
-//     account: { account },
-//     networkLayer: {
-//       systemCalls: { reinforce_outpost, confirm_event_outpost },
-//       network: { clientComponents, contractComponents },
-//     },
-//   } = useDojo();
+  //   const {
+  //     account: { account },
+  //     networkLayer: {
+  //       systemCalls: { reinforce_outpost, confirm_event_outpost },
+  //       network: { clientComponents, contractComponents },
+  //     },
+  //   } = useDojo();
 
-//   const selectedOutposts = useEntityQuery([HasValue(clientComponents.ClientOutpostData, { owned: true })]);
-//   const allOutpostinEventAdminBot = useEntityQuery([HasValue(clientComponents.ClientOutpostData, { event_effected: true })]);
-//   const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
+  //   const selectedOutposts = useEntityQuery([HasValue(clientComponents.ClientOutpostData, { owned: true })]);
+  //   const allOutpostinEventAdminBot = useEntityQuery([HasValue(clientComponents.ClientOutpostData, { event_effected: true })]);
+  //   const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
 
-//   const moveCameraHere = (x: number, y: number) => {
+  //   const moveCameraHere = (x: number, y: number) => {
 
-//     const clientCameraComp = getComponentValueStrict(clientComponents.ClientCameraPosition, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
-    
-//     setComponentQuick({"x": x, "y": y, "tile_index": clientCameraComp.tile_index},[getEntityIdFromKeys([BigInt(GAME_CONFIG)])], "ClientCameraPosition", clientComponents);
-//   }
+  //     const clientCameraComp = getComponentValueStrict(clientComponents.ClientCameraPosition, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
 
-//   const reinforceOutpost = (outpost_id: any) => {
+  //     setComponentQuick({"x": x, "y": y, "tile_index": clientCameraComp.tile_index},[getEntityIdFromKeys([BigInt(GAME_CONFIG)])], "ClientCameraPosition", clientComponents);
+  //   }
 
-//     const reinforceOutpostProps: ReinforceOutpostProps = {
-//       account: account,
-//       game_id: clientGameData.current_game_id,
-//       outpost_id: outpost_id,
-//     };
+  //   const reinforceOutpost = (outpost_id: any) => {
 
-//     reinforce_outpost(reinforceOutpostProps);
-//   }
+  //     const reinforceOutpostProps: ReinforceOutpostProps = {
+  //       account: account,
+  //       game_id: clientGameData.current_game_id,
+  //       outpost_id: outpost_id,
+  //     };
 
-//   const confirmEvent = async (id : number) => {
+  //     reinforce_outpost(reinforceOutpostProps);
+  //   }
 
-//     const gameTrackerData = getComponentValueStrict(contractComponents.GameEntityCounter, getEntityIdFromKeys([BigInt(clientGameData.current_game_id)]));
+  //   const confirmEvent = async (id : number) => {
 
-//     const confirmEventProps: ConfirmEventOutpost = {
-//       account: account,
-//       game_id: clientGameData.current_game_id,
-//       event_id: gameTrackerData.event_count,
-//       outpost_id: id,
-//     };
+  //     const gameTrackerData = getComponentValueStrict(contractComponents.GameEntityCounter, getEntityIdFromKeys([BigInt(clientGameData.current_game_id)]));
 
-//     await confirm_event_outpost(confirmEventProps);
-// }
+  //     const confirmEventProps: ConfirmEventOutpost = {
+  //       account: account,
+  //       game_id: clientGameData.current_game_id,
+  //       event_id: gameTrackerData.event_count,
+  //       outpost_id: id,
+  //     };
 
-//   const confirmAll = async () => {
-//     for (let index = 0; index < selectedOutposts.length; index++) {
-//       const element = selectedOutposts[index];
+  //     await confirm_event_outpost(confirmEventProps);
+  // }
 
-//       console.error(element)
+  //   const confirmAll = async () => {
+  //     for (let index = 0; index < selectedOutposts.length; index++) {
+  //       const element = selectedOutposts[index];
 
-//       const clientOutpostData = getComponentValueStrict(clientComponents.ClientOutpostData, element);
-//       const outpostData = getComponentValueStrict(contractComponents.Outpost, element);
-      
-//       console.log(clientOutpostData)
-      
+  //       console.error(element)
 
-//       if (clientOutpostData.event_effected === true  && outpostData.lifes > 0)
-//       {
-        
-//         await confirmEvent(clientOutpostData.id);
-//       }
-    
-//     }
-//   }
+  //       const clientOutpostData = getComponentValueStrict(clientComponents.ClientOutpostData, element);
+  //       const outpostData = getComponentValueStrict(contractComponents.Outpost, element);
 
-//   const adminKillAll = async () => {
-//     for (let index = 0; index < allOutpostinEventAdminBot.length; index++) {
-//       const element = selectedOutposts[index];
-
-//       console.error(element)
-
-//       const clientOutpostData = getComponentValueStrict(clientComponents.ClientOutpostData, element);
-//       const outpostData = getComponentValueStrict(contractComponents.Outpost, element);
-      
-//       console.log(clientOutpostData)
-      
-
-//       if (clientOutpostData.event_effected === true  && outpostData.lifes > 0)
-//       {
-        
-//         await confirmEvent(clientOutpostData.id);
-//       }
-//     }
-
-//   }
+  //       console.log(clientOutpostData)
 
 
-//   useEffect(() => {
-//     const handleKeyPress = (event: KeyboardEvent) => {
-//       if (event.key === 'l') {
-//         adminKillAll();
-//       }
-//     };
+  //       if (clientOutpostData.event_effected === true  && outpostData.lifes > 0)
+  //       {
 
-//     window.addEventListener('keydown', handleKeyPress);
+  //         await confirmEvent(clientOutpostData.id);
+  //       }
 
-//     return () => {
-//       window.removeEventListener('keydown', handleKeyPress);
-//     };
-//   }, []);
+  //     }
+  //   }
 
-//   const playerInfo = getComponentValue(contractComponents.PlayerInfo, getEntityIdFromKeys([BigInt(clientGameData.current_game_id), BigInt(account_add)]));
+  //   const adminKillAll = async () => {
+  //     for (let index = 0; index < allOutpostinEventAdminBot.length; index++) {
+  //       const element = selectedOutposts[index];
+
+  //       console.error(element)
+
+  //       const clientOutpostData = getComponentValueStrict(clientComponents.ClientOutpostData, element);
+  //       const outpostData = getComponentValueStrict(contractComponents.Outpost, element);
+
+  //       console.log(clientOutpostData)
+
+
+  //       if (clientOutpostData.event_effected === true  && outpostData.lifes > 0)
+  //       {
+
+  //         await confirmEvent(clientOutpostData.id);
+  //       }
+  //     }
+
+  //   }
+
+
+  //   useEffect(() => {
+  //     const handleKeyPress = (event: KeyboardEvent) => {
+  //       if (event.key === 'l') {
+  //         adminKillAll();
+  //       }
+  //     };
+
+  //     window.addEventListener('keydown', handleKeyPress);
+
+  //     return () => {
+  //       window.removeEventListener('keydown', handleKeyPress);
+  //     };
+  //   }, []);
+
+  //   const playerInfo = getComponentValue(contractComponents.PlayerInfo, getEntityIdFromKeys([BigInt(clientGameData.current_game_id), BigInt(account_add)]));
+
+  useEffect(() => { console.log(text)}, [text]);
 
   return (
-    <div className="profile-page-container">
-      
-      <img className="page-img" src="./assets/Page_Bg/PROFILE_PAGE_BG.png" alt="testPic" />
+    <ClickWrapper className="profile-page-container">
+
+      <img className="page-img" style={{ zIndex: "" }} src="./assets/Page_Bg/PROFILE_PAGE_BG.png" alt="testPic" />
 
       <div className="title-section">
-        <h2>PROFILE</h2>
+        <h2 style={{fontSize:"3cqw", fontWeight:"100"}}>PROFILE</h2>
         <div className="title-cart-section">
           <h1>
             {" "}
             {/* <img src="LOGO_WHITE.png" className="test-embed" alt=""></img> {playerInfo === undefined ? 0 : playerInfo.reinforcement_count} */}
-            <img src="LOGO_WHITE.png" className="test-embed" alt=""></img> {0}
+            <img src="assets/LOGO_WHITE.png" className="test-embed" alt=""></img> {0}
           </h1>
           <h3>Reinforcement available</h3>
         </div>
@@ -155,7 +157,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState}) => {
               <h2>Outpost ID</h2>
               <h2>Position</h2>
               <h2>Reinforcements</h2>
-              <div style={{ backgroundColor: "black", flex: "1.5" }}></div>
+              <div style={{ backgroundColor: "black", flex: "1" }}></div>
             </div>
             <ClickWrapper className="table-items-container">
               {/*  this should be an element */}
@@ -191,83 +193,84 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState}) => {
                   </div>
                 </div>
               ))} */}
-               <div
-                  key={0}
-                  className="item-container-profile"
-                  onMouseEnter={() => setHoveredIndex(0)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  <h2 onMouseEnter={() => setText("")}>{0}</h2>
-                  
-                  <h2 onMouseEnter={() => setText("Go Here")}>
-                    X: {1832}, Y:{5342}
-                  </h2>
+              <div
+                key={0}
+                className="item-container-profile"
+                onMouseEnter={() => setHoveredIndex(0)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <h2 onMouseEnter={() => setText("")}>{0}</h2>
 
-                  <h2
-                    onMouseDown={() => {}}
-                    onMouseEnter={() => setText("Reinforce")} >
-                      {2}
-                  </h2>
+                <h2 onMouseEnter={() => setText("Go Here")}>
+                  X: {1832}, Y:{5342}
+                </h2>
 
-                  <div className="item-button" style={{ opacity: hoveredIndex === 0 ? 1 : 0 }}>
-                    {text}
-                  </div>
+                <h2
+                  onMouseDown={() => { }}
+                  onMouseEnter={() => setText("Reinforce")} >
+                  {2}
+                </h2>
+
+                <div className="item-button global-button-style" style={{ opacity: hoveredIndex === 0 && text !== "" ? 1 : 0 }}>
+                  {text}
+                </div>
+              </div>
+
+              <div
+                key={1}
+                className="item-container-profile"
+                onMouseEnter={() => setHoveredIndex(1)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <h2 onMouseEnter={() => setText("")}>{1}</h2>
+
+                <h2 onMouseEnter={() => setText("Go Here")}>
+                  X: {1832}, Y:{5342}
+                </h2>
+
+                <h2
+                  onMouseDown={() => { }}
+                  onMouseEnter={() => setText("Reinforce")} >
+                  {2}
+                </h2>
+
+                <div className="item-button global-button-style" style={{ opacity: hoveredIndex === 1 && text !== "" ? 1 : 0 }}>
+                  {text}
                 </div>
 
-                <div
-                  key={1}
-                  className="item-container-profile"
-                  onMouseEnter={() => setHoveredIndex(1)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  <h2 onMouseEnter={() => setText("")}>{1}</h2>
-                  
-                  <h2 onMouseEnter={() => setText("Go Here")}>
-                    X: {1832}, Y:{5342}
-                  </h2>
+              </div>
 
-                  <h2
-                    onMouseDown={() => {}}
-                    onMouseEnter={() => setText("Reinforce")} >
-                      {2}
-                  </h2>
+              <div
+                key={2}
+                className="item-container-profile"
+                onMouseEnter={() => setHoveredIndex(2)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <h2 onMouseEnter={() => setText("")}>{2}</h2>
 
-                  <div className="item-button" style={{ opacity: hoveredIndex === 1 ? 1 : 0 }}>
-                    {text}
-                  </div>
+                <h2 onMouseEnter={() => setText("Go Here")}>
+                  X: {1832}, Y:{5342}
+                </h2>
+
+                <h2
+                  onMouseDown={() => { }}
+                  onMouseEnter={() => setText("Reinforce")} >
+                  {2}
+                </h2>
+
+                <div className="item-button global-button-style" style={{ opacity: hoveredIndex === 2 && text !== ""? 1 : 0 }}>
+                  {text}
                 </div>
-
-                <div
-                  key={2}
-                  className="item-container-profile"
-                  onMouseEnter={() => setHoveredIndex(2)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  <h2 onMouseEnter={() => setText("")}>{2}</h2>
-                  
-                  <h2 onMouseEnter={() => setText("Go Here")}>
-                    X: {1832}, Y:{5342}
-                  </h2>
-
-                  <h2
-                    onMouseDown={() => {}}
-                    onMouseEnter={() => setText("Reinforce")} >
-                      {2}
-                  </h2>
-
-                  <div className="item-button" style={{ opacity: hoveredIndex === 2 ? 1 : 0 }}>
-                    {text}
-                  </div>
-                </div>
+              </div>
 
             </ClickWrapper>
           </div>
         </div>
         <div className="buy-section">
           <div className="button-style-profile">Buy Reinforcements (Disabled)</div>
-          <ClickWrapper className="button-style-profile" onMouseDown={() => {}}>Destory All</ClickWrapper>
+          <ClickWrapper className="button-style-profile" onMouseDown={() => { }}>Destory All</ClickWrapper>
         </div>
       </div>
-    </div>
+    </ClickWrapper>
   );
 };

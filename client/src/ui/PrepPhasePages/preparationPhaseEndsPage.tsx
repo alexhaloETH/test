@@ -63,7 +63,6 @@ export const PrepPhaseEndsPage: React.FC<PrepPhaseEndsPageProps> = ({ setMenuSta
                     <div onMouseDown={() => {setMenuState(PrepPhaseStages.BUY_REVS)}} className="global-button-style" style={{padding:"5px 10px"}}>Summon more Revenants</div>
                     <div onMouseDown={() => {setMenuState(PrepPhaseStages.BUY_REIN)}} className="global-button-style" style={{padding:"5px 10px"}}>Buy more Reinforcements</div>
                 </div>
-
             </ClickWrapper>
         </div>
     );
