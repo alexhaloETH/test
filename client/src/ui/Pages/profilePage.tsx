@@ -145,7 +145,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState }) => {
           <h1>
             {" "}
             {/* <img src="LOGO_WHITE.png" className="test-embed" alt=""></img> {playerInfo === undefined ? 0 : playerInfo.reinforcement_count} */}
-            <img src="assets/LOGO_WHITE.png" className="test-embed" alt=""></img> {0}
+            <img src="./assets/LOGO_WHITE.png" className="test-embed" alt=""></img> {0}
           </h1>
           <h3>Reinforcement available</h3>
         </div>
