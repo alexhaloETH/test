@@ -86,14 +86,14 @@ export const GamePhaseManager = () => {
   const outpostDeadQuery = useEntityQuery([HasValue(contractComponents.Outpost, { lifes: 0 })]);
   const totalOutposts = useEntityQuery([Has(contractComponents.Outpost)]);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (totalOutposts.length - outpostDeadQuery.length <= 1 )
-    {
-      setCurrentMenuState(MenuState.WINNER);
-    }
+  //   if (totalOutposts.length - outpostDeadQuery.length <= 1 )
+  //   {
+  //     setCurrentMenuState(MenuState.WINNER);
+  //   }
 
-  }, [outpostDeadQuery]);
+  // }, [outpostDeadQuery]);
 
   // this only needs to be like this for the debug, once the game ships take out the dependency
   useEffect(() => {
@@ -194,6 +194,7 @@ export const GamePhaseManager = () => {
 
   return (
     <>
+    <img src="./map_Island.png" alt="" style={{position:'absolute', width:"100%", height:"100%", top:"0", left:"0"}}/>
       <div className="main-page-container-layout">
         <div className='main-page-topbar'>
           <TopBarComponent />

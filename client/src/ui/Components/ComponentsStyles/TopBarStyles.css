@@ -62,7 +62,7 @@
 .logo-img {
   height: 80%;
   aspect-ratio: 1/1;
-  background-image: url("./assets/LOGO_WHITE.png");
+  background-image: url("LOGO_WHITE.png");
 
   background-size: cover;
   background-position: center;

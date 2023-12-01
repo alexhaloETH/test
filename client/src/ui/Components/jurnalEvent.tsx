@@ -90,17 +90,16 @@ export const JurnalEventComponent: React.FC<JuornalEventProps> = ({ setMenuState
 
   return (
     <div className="jurnal-event-container">
-      <ClickWrapper className="title-div-container" style={{ display:"flex",justifyContent:"space-between", alignItems:"center"}}>
+      <ClickWrapper className="title-div-container">
         <h2>
           REVENANT JOURNAL {" "}
         </h2>
 
-        <img
-            src="LOGO_WHITE.png"
-            style={{ maxHeight: "1.4cqw" , aspectRatio: "1/1"}}
-            alt="Logo"
-            onMouseDown={() => (openJurnal())}
-        ></img>
+        <h2 onMouseDown={() => (openJurnal())} className="close-button">
+          X
+        </h2>
+
+
       </ClickWrapper>
 
       {/* <div className="current-data-container">
