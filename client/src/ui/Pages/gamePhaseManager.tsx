@@ -208,7 +208,7 @@ export const GamePhaseManager = () => {
               {currentMenuState === MenuState.TRADES && <TradesPage />}
               {currentMenuState === MenuState.STATS && <StatsPage setMenuState={setCurrentMenuState} />}
               {currentMenuState === MenuState.REV_JURNAL && <RevenantJurnalPage setMenuState={setCurrentMenuState} />}
-              {currentMenuState === MenuState.WINNER && <WinnerPage setMenuState={setCurrentMenuState} />}
+              {/* {currentMenuState === MenuState.WINNER && <WinnerPage setMenuState={setCurrentMenuState} />} */}
               {currentMenuState === MenuState.Debug && <DebugPage />}
             </div>
           )}

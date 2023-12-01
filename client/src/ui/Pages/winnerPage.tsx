@@ -23,29 +23,29 @@ export const WinnerPage: React.FC<WinnerPageProps> = ({ setMenuState }) =>
         setMenuState(MenuState.NONE);
     };
 
-    const {
-        account : { account },
-        networkLayer: {
-            network: { contractComponents },
-        },
-    } = useDojo();
+  //   const {
+  //       account : { account },
+  //       networkLayer: {
+  //           network: { contractComponents },
+  //       },
+  //   } = useDojo();
 
 
-  const outpostDeadQuery = useEntityQuery([HasValue(contractComponents.Outpost, { lifes: 0 })]);
-  const totalOutposts = useEntityQuery([Has(contractComponents.Outpost)]);
+  // const outpostDeadQuery = useEntityQuery([HasValue(contractComponents.Outpost, { lifes: 0 })]);
+  // const totalOutposts = useEntityQuery([Has(contractComponents.Outpost)]);
 
-  console.error("outpostDeadQuery", outpostDeadQuery);
-    console.error("totalOutposts", totalOutposts);
+  // console.error("outpostDeadQuery", outpostDeadQuery);
+  //   console.error("totalOutposts", totalOutposts);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const difference: string[] = totalOutposts.filter(item => !outpostDeadQuery.includes(item));
+  //   const difference: string[] = totalOutposts.filter(item => !outpostDeadQuery.includes(item));
 
-    const outpostComp = getComponentValueStrict(contractComponents.Outpost, getEntityIdFromKeys([BigInt( difference[0])]));
+  //   const outpostComp = getComponentValueStrict(contractComponents.Outpost, getEntityIdFromKeys([BigInt( difference[0])]));
 
-    setWinningAddress(outpostComp.owner);
+  //   setWinningAddress(outpostComp.owner);
 
-  }, []);
+  // }, []);
 
 
 
@@ -59,14 +59,14 @@ export const WinnerPage: React.FC<WinnerPageProps> = ({ setMenuState }) =>
         <div className="winner-page-container">
                 <div className="content-container">
                     <h3>Address: {winningAddress}</h3>
-                    {winningAddress === account.address ?   <h1>YOU ARE THE RISING REVENANT</h1> : <h1>IS THE RISING REVENANT</h1>}
+                    {/* {winningAddress === account.address ?   <h1>YOU ARE THE RISING REVENANT</h1> : <h1>IS THE RISING REVENANT</h1>} */}
                     <ClickWrapper className="button-style">Claim your jackpot</ClickWrapper>
                 </div>
 
-                {winningAddress === account.address && <div className="share-text" onMouseDown={() => {shareOnTwitter()}}>
+                {/* {winningAddress === account.address && <div className="share-text" onMouseDown={() => {shareOnTwitter()}}>
                     <h2>Share on</h2>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg"></img>
-                </div>}
+                </div>} */}
         </div>
     )
 }

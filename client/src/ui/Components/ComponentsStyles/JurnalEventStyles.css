@@ -34,15 +34,15 @@
   font-weight: 100;
 }
 
-.title-div-container img {
+/* .title-div-container img {
   flex: 1;
   height: 80%;
   object-fit: fill;
-}
+}*/
 
 .title-div-container img:hover {
   cursor: pointer;
-}
+} 
 
 .current-data-container {
   height: auto;
