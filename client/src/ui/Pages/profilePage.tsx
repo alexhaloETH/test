@@ -40,7 +40,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({ setMenuState }) => {
       <div className="pages-upper-section">
 
         <div className="page-left-flex">
-          <h2>X</h2>
+          <h2 onMouseDown={() => {}}>X</h2>
         </div>
         <div className="page-title-flex">
           <h1>PROFILE</h1>
