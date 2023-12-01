@@ -56,7 +56,7 @@ export const BuyReinforcementPage: React.FC<BuyReinforcementsPageProps> = ({ set
             <ClickWrapper className="main-content">
                 <h2 className="main-content-header">REINFORCE YOUR OUTPOST</h2>
                 <CounterElement value={reinforcementNumber} setValue={setReinforcementNumber} />
-                <div className="global-button-style"  style={{ padding:"5px 10px",  fontSize:"1.3cqw" }}onMouseDown={() => { buyReinforcements(reinforcementNumber) }}> Reinforce (Tot: {priceOfReinforcements * reinforcementNumber} $LORDS)</div>
+                <div className="global-button-style"  style={{ width:"fit-content", padding:"5px 10px",  fontSize:"1.3cqw" }}onMouseDown={() => { buyReinforcements(reinforcementNumber) }}> Reinforce (Tot: {priceOfReinforcements * reinforcementNumber} $LORDS)</div>
             </ClickWrapper>
             <div className="footer-text-section" >
                 <div className="price-text"> 1 Reinforcement = {priceOfReinforcements} $LORDS</div>

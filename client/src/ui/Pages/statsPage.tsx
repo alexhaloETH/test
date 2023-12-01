@@ -20,17 +20,20 @@ export const StatsPage: React.FC<StatsPageProps> = ({ setMenuState }) => {
     const refreshList = () => { };
 
     return (
-        <ClickWrapper className="stats-page-container">
+        <ClickWrapper className="game-page-container">
+
+            <img className="page-img" src="./assets/Page_Bg/STATS_PAGE_BG.png" alt="testPic" />
+
             <div className="title-section">
                 <h2>STATISTICS</h2>
             </div>
-            <div className="content-section">
+            <div className="content-section" style={{position:"relative"}}>
                 <div className="stats-section">
                     <div className="list-container">
                         <div className="list-title-section">
 
-                            <h2>NAME OF FIELD  
-                                <img className="icon" src="LOGO_WHITE.png" alt="add button" onMouseDown={() => { refreshList() }} /> 
+                            <h2>NAME OF FIELD
+                                <img className="icon" src="LOGO_WHITE.png" alt="add button" onMouseDown={() => { refreshList() }} />
                                 <img className="icon" src="LOGO_WHITE.png" alt="add button" onMouseDown={() => { sortList() }} />
                             </h2>
 
@@ -42,8 +45,8 @@ export const StatsPage: React.FC<StatsPageProps> = ({ setMenuState }) => {
                     <div className="list-container">
                         <div className="list-title-section">
 
-                            <h2>NAME OF FIELD  
-                                <img className="icon" src="LOGO_WHITE.png" alt="Sort Data" onMouseDown={() => { refreshList() }} /> 
+                            <h2>NAME OF FIELD
+                                <img className="icon" src="LOGO_WHITE.png" alt="Sort Data" onMouseDown={() => { refreshList() }} />
                                 <img className="icon" src="LOGO_WHITE.png" alt="Reload Data" onMouseDown={() => { sortList() }} />
                             </h2>
 
@@ -67,7 +70,8 @@ export const StatsPage: React.FC<StatsPageProps> = ({ setMenuState }) => {
 
                 </div>
             </div>
-            <div className="top-right-button" onMouseDown={() => {closePage()}}>X</div>
+            <div className="top-right-button" onMouseDown={() => { closePage() }}>X</div>
+        
         </ClickWrapper>
     );
 };

@@ -126,11 +126,11 @@
 
 
 
-.page-container {
+.game-page-container {
   width: 100%;
   height: 100%;
+
   position: relative;
-  color: white;
 }
 
 .page-img {
@@ -143,5 +143,65 @@
 
   filter: brightness(var(--brightness)); /* Adjust the percentage to make it darker or lighter */
 }
+
+
+
+.pages-upper-section
+{
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  height: 10%;
+  /* background-color:red; */
+  color: white;
+}
+
+.page-title-flex
+{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title-flex h1
+{
+  font-family: Zelda;
+  font-weight: 100;
+  font-size: 3cqw;
+}
+
+.page-left-flex
+{
+  padding-left: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* background-color: grey; */
+  font-size: 2cqw;
+  font-family: Zelda;
+  font-weight: 100;
+}
+
+.page-left-flex h2:hover
+{
+  cursor: pointer;
+}
+
+
+.page-right-flex
+{
+  padding-right: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* background-color: greenyellow; */
+}
+
 
 

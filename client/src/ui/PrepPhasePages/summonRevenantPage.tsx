@@ -79,7 +79,7 @@ export const BuyRevenantPage: React.FC<BuyRevenantPageProps> = ({ setMenuState }
 
                 <CounterElement value={revenantNumber} setValue={setRevenantNumber}/>
 
-                <div className="global-button-style" style={{fontSize:"1.3cqw", padding:"5px 10px"}} onMouseDown={() => {summonRev(revenantNumber)}}>Summon (Tot: {revenantNumber * revenantCost} $Lords)</div>
+                <div className="global-button-style" style={{ width:"fit-content", fontSize:"1.3cqw", padding:"5px 10px"}} onMouseDown={() => {summonRev(revenantNumber)}}>Summon (Tot: {revenantNumber * revenantCost} $Lords)</div>
             </ClickWrapper>
             <div className="footer-text-section" >
                 <div className="price-text"> 1 Revenant = {revenantCost} $LORDS</div>

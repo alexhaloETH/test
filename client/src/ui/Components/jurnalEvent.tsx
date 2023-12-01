@@ -98,7 +98,7 @@ export const JurnalEventComponent: React.FC<JuornalEventProps> = ({ setMenuState
         <h2 onMouseDown={() => (openJurnal())} className="close-button">
           X
         </h2>
-
+        {/* <img src="enlarge_icon.svg" className="test-embed" alt=""  onMouseDown={() => (openJurnal())}></img> */}
 
       </ClickWrapper>
 

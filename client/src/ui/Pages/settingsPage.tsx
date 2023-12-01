@@ -9,15 +9,17 @@ interface SettingPageProps {
     setMenuState: React.Dispatch<React.SetStateAction<MenuState>>;
 }
 
-export const SettingsPage: React.FC<SettingPageProps> = ({ setMenuState }) => 
-{
+export const SettingsPage: React.FC<SettingPageProps> = ({ setMenuState }) => {
 
     const closePage = () => {
         setMenuState(MenuState.NONE);
     };
 
     return (
-        <div className="settings-page-container">
+        <div className="game-page-container">
+
+            <img className="page-img" src="./assets/Page_Bg/PROFILE_PAGE_BG.png" alt="testPic" />
+
         </div>
     )
 }
