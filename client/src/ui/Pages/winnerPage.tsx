@@ -1,15 +1,27 @@
+//libs
 import React, { useEffect } from "react";
-
-import "./PagesStyles/WinnerPageStyles.css";
-
-import { MenuState } from "./gamePhaseManager";
-import { ClickWrapper } from "../clickWrapper";
-import { useDojo } from "../../hooks/useDojo";
-
 import { HasValue,  getComponentValueStrict, Has } from "@latticexyz/recs";
 import { useEntityQuery } from "@latticexyz/react";
 import { getEntityIdFromKeys } from "@dojoengine/utils";
+import { MenuState } from "./gamePhaseManager";
+import { useDojo } from "../../hooks/useDojo";
 
+//styles
+import "./PagesStyles/WinnerPageStyles.css";
+
+//elements/components
+import { ClickWrapper } from "../clickWrapper";
+
+//pages
+
+
+/*notes
+    this page should either have a way to get the winning user or just calc but it self (for now prob just calc it)
+    and then depending on if the user is the winner or not it will display a different message
+
+
+    should call the jackpot function
+*/
 
 interface WinnerPageProps {
     setMenuState: React.Dispatch<React.SetStateAction<MenuState>>;

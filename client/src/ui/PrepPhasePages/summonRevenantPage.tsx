@@ -75,10 +75,8 @@ export const BuyRevenantPage: React.FC<BuyRevenantPageProps> = ({ setMenuState }
         <div className="summon-revenant-page-container" >
             <img className="br-page-container-img" src={`${backgroundImage}`}  alt="testPic" />
             <ClickWrapper className="main-content">
-                <h2 className="main-content-header" style={{fontSize:"2.5cqw"}}>SUMMON A REVENANT</h2>
-
+                <h2 className="main-content-header">SUMMON A REVENANT</h2>
                 <CounterElement value={revenantNumber} setValue={setRevenantNumber}/>
-
                 <div className="global-button-style" style={{ width:"fit-content", fontSize:"1.3cqw", padding:"5px 10px"}} onMouseDown={() => {summonRev(revenantNumber)}}>Summon (Tot: {revenantNumber * revenantCost} $Lords)</div>
             </ClickWrapper>
             <div className="footer-text-section" >

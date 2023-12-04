@@ -209,6 +209,22 @@
 
 
 
+/*notes
+  this component should have an event that takes a list of entity ids and start by displaying the first one
+
+  if more it should show a counter like elemnt at the bottom that allows the user to navigate through the list
+
+  the only thing that changes between outposts is the state at whihc they are at
+
+  this component should also deal wiht the setting of the selected outpost and the deselection of the previous one so highlight it
+
+
+  
+the update of the outpost will be done on demand from the clicking on them so this will be done here, when an outpost is selecet it will query it self to update its data
+
+*/
+
+
 
 
 import React, { useState, useEffect } from "react";

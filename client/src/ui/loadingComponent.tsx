@@ -11,6 +11,10 @@ export const LoadingComponent: React.FC<LoadingPageProps> = ({ setUIState }) =>{
   // this will have the vid of the loading thing in the middle
   // this will first load in the phase of the game which will then dictate what actually gets loaded in
 
+  // if in phase prep only load in the users outposts and the player data
+
+  //else load in everything
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setUIState(Phase.PREP);

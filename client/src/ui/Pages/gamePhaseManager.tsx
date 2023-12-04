@@ -1,4 +1,3 @@
-
 //libs
 import  { useState, useEffect } from 'react';
 import {
@@ -8,16 +7,22 @@ import {
 } from "@latticexyz/recs";
 import { store } from '../../store/store';
 import { useEntityQuery } from "@latticexyz/react";
+import { useDojo } from '../../hooks/useDojo';
+
+import { getEntityIdFromKeys } from '@dojoengine/utils';
+import {   setComponentQuick } from '../../dojo/testCalls';
+import { GAME_CONFIG, MAP_HEIGHT, MAP_WIDTH } from '../../phaser/constants';
 
 // styles
 import "./PagesStyles/MainMenuContainerStyles.css"
 
-//components
+//elements/components
 import { TopBarComponent } from '../Components/mainTopBar';
 import { NavbarComponent } from '../Components/navbar';
 import { JurnalEventComponent } from '../Components/jurnalEvent';
 import { OutpostTooltipComponent } from '../Components/outpostTooltip';
 
+//pages
 import { ProfilePage } from './profilePage';
 import { RulesPage } from './rulesPage';
 import { SettingsPage } from './settingsPage';
@@ -28,11 +33,16 @@ import { WinnerPage } from './winnerPage';
 
 import { DebugPage } from './debugPage';
 
-import { useDojo } from '../../hooks/useDojo';
+/*notes
+component that manages the game phase, this should deal with the update of the UI state and then update of the camera movement and any other related inputs
+to phaser
 
-import { getEntityIdFromKeys } from '@dojoengine/utils';
-import {   setComponentQuick } from '../../dojo/testCalls';
-import { GAME_CONFIG, MAP_HEIGHT, MAP_WIDTH } from '../../phaser/constants';
+should also dictate the winning state
+do two simple queries one for the totla outpost and one for the totla outposts wiht 0 health and then if the total outposts - the total outposts with 0 health is less than 2
+then we have a winner
+
+*/
+
 import { useWASDKeys } from '../../phaser/systems/eventSystems/keyPressListener';
 
 export enum MenuState {
@@ -96,27 +106,27 @@ export const GamePhaseManager = () => {
   // }, [outpostDeadQuery]);
 
   // this only needs to be like this for the debug, once the game ships take out the dependency
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setCurrentMenuState(MenuState.NONE);
-      }
+  // useEffect(() => {
+  //   const handleKeyPress = (event: KeyboardEvent) => {
+  //     if (event.key === 'Escape') {
+  //       setCurrentMenuState(MenuState.NONE);
+  //     }
 
-      if (event.key === 'j') {
-        if (currentMenuState === MenuState.Debug) {
-          setCurrentMenuState(MenuState.NONE);
-        } else {
-          setCurrentMenuState(MenuState.Debug);
-        }
-      }
-    };
+  //     if (event.key === 'j') {
+  //       if (currentMenuState === MenuState.Debug) {
+  //         setCurrentMenuState(MenuState.NONE);
+  //       } else {
+  //         setCurrentMenuState(MenuState.Debug);
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener('keydown', handleKeyPress);
+  //   window.addEventListener('keydown', handleKeyPress);
 
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [currentMenuState]);
+  //   return () => {
+  //     window.removeEventListener('keydown', handleKeyPress);
+  //   };
+  // }, [currentMenuState]);
 
   // useEffect(() => {
   //   let animationFrameId: number;
@@ -192,6 +202,10 @@ export const GamePhaseManager = () => {
   //   };
   // }, [keysDown]);
 
+  const closePage = () => {
+    setCurrentMenuState(MenuState.NONE);
+  }
+
   return (
     <>
     <img src="./map_Island.png" alt="" style={{position:'absolute', width:"100%", height:"100%", top:"0", left:"0"}}/>
@@ -203,8 +217,8 @@ export const GamePhaseManager = () => {
         <div className='main-page-content'>
           {currentMenuState !== MenuState.NONE && (
             <div className='page-container'>
-              {currentMenuState === MenuState.PROFILE && <ProfilePage setMenuState={setCurrentMenuState}/>}
-              {currentMenuState === MenuState.RULES && <RulesPage setMenuState={setCurrentMenuState} />}
+              {currentMenuState === MenuState.PROFILE && <ProfilePage setUIState={closePage}/>}
+              {currentMenuState === MenuState.RULES && <RulesPage setUIState={closePage} />}
               {currentMenuState === MenuState.SETTINGS && <SettingsPage setMenuState={setCurrentMenuState} />}
               {currentMenuState === MenuState.TRADES && <TradesPage />}
               {currentMenuState === MenuState.STATS && <StatsPage setMenuState={setCurrentMenuState} />}
@@ -218,10 +232,9 @@ export const GamePhaseManager = () => {
         </div>
       </div>
       
-
       {/* pretty sure this is the wrong class as it doesnt make sense */}
       <div className='main-page-topbar'>
-        <NavbarComponent menuState={currentMenuState} setMenuState={setCurrentMenuState} onIconClick={handleIconClick} />
+        <NavbarComponent menuState={currentMenuState} setMenuState={setCurrentMenuState} />
       </div>
 
       {currentMenuState === MenuState.NONE && <JurnalEventComponent setMenuState={setCurrentMenuState} />}

@@ -14,6 +14,12 @@ import "./PagesStyles/BuyingPageStyle.css";
 
 //components
 
+//pages
+
+/*notes
+    this page is fine 
+*/
+
 interface PrepPhaseEndsPageProps {
     setMenuState: React.Dispatch<PrepPhaseStages>;
 }

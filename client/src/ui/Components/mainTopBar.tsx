@@ -16,6 +16,8 @@ import {  truncateString } from "../../utils";
 import { ClickWrapper } from "../clickWrapper";
 
 
+// the main top bar will be used to load in every 10 seconds the game data and display it to the user
+
 export const TopBarComponent = () => {
     const [isloggedIn, setIsLoggedIn] = useState(true);
     const [inGame, setInGame] = useState(1);
