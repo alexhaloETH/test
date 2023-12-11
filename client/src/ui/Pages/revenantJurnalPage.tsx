@@ -213,7 +213,7 @@ export const RevenantJurnalPage: React.FC<RevenantjurnalPageProps> = ({ setMenuS
 const ListElement: React.FC<{ entityId: EntityIndex, clientComponents: any, contractComponents: any }> = ({ entityId, clientComponents, contractComponents }) => {
     // Use effect and consts can be added here if needed
     const [outpostId, setOutpostId] = useState<string>("404");
-    const [outpostOwner, setOutpostOwner] = useState<string>("You");
+    const [outpostOwner, setOutpostOwner] = useState<string>("Someone Else");
 
     const [outpostCoordinates, setOutpostCoordinates] = useState<{ x: number, y: number }>({ x: 404, y: 404 });
 
