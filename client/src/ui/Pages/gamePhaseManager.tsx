@@ -10,8 +10,7 @@ import { useEntityQuery } from "@latticexyz/react";
 import { useDojo } from '../../hooks/useDojo';
 
 import { getEntityIdFromKeys } from '@dojoengine/utils';
-import {   setComponentQuick } from '../../dojo/testCalls';
-import { GAME_CONFIG, MAP_HEIGHT, MAP_WIDTH } from '../../phaser/constants';
+import { GAME_CONFIG, MAP_HEIGHT, MAP_WIDTH, getTileIndex } from '../../phaser/constants';
 
 // styles
 import "./PagesStyles/MainMenuContainerStyles.css"
@@ -19,8 +18,9 @@ import "./PagesStyles/MainMenuContainerStyles.css"
 //elements/components
 import { TopBarComponent } from '../Components/mainTopBar';
 import { NavbarComponent } from '../Components/navbar';
-import { JurnalEventComponent } from '../Components/jurnalEvent';
-import { OutpostTooltipComponent } from '../Components/outpostTooltip';
+import { OutpostTooltipComponent } from '../Components/outpostToolTip';
+import { JurnalEventComponent } from '../Components/jurnalEventComponent';
+
 
 //pages
 import { ProfilePage } from './profilePage';
@@ -40,10 +40,10 @@ to phaser
 should also dictate the winning state
 do two simple queries one for the totla outpost and one for the totla outposts wiht 0 health and then if the total outposts - the total outposts with 0 health is less than 2
 then we have a winner
-
 */
 
 import { useWASDKeys } from '../../phaser/systems/eventSystems/keyPressListener';
+import { setClientCameraComponent, setClientCameraEntityIndex } from '../../utils';
 
 export enum MenuState {
   NONE,
@@ -63,35 +63,23 @@ export const GamePhaseManager = () => {
   const [currentMenuState, setCurrentMenuState] = useState(MenuState.NONE);
   const [showEventButton, setShowEventButton] = useState(false);
 
-  const keysDown = useWASDKeys();
+  // const keysDown = useWASDKeys();
 
   // const {
-  //   account: { account },
   //   networkLayer: {
   //     network: {  contractComponents, clientComponents },
   //   },
+  //   phaserLayer:{
+  //     scenes: {
+  //       Main: { camera },
+  //     }
+  //   }
   // } = useDojo();
 
-  const CAMERA_SPEED = 10;
+  // const CAMERA_SPEED = 10;   ///needs to be global in the settings
 
-  const layers = store((state) => {
-    return {
-      phaserLayer: state.phaserLayer,
-    };
-  });
-
-  // const {
-  //   scenes: {
-  //     Main: { camera },
-  //   }
-  // } = layers.phaserLayer;
-
-  let prevX: number = 0;
-  let prevY: number = 0;
-
-  const handleIconClick = (newMenuState: MenuState) => {
-    setCurrentMenuState(newMenuState);
-  };
+  // let prevX: number = 0;
+  // let prevY: number = 0;
 
   // const outpostDeadQuery = useEntityQuery([HasValue(contractComponents.Outpost, { lifes: 0 })]);
   // const totalOutposts = useEntityQuery([Has(contractComponents.Outpost)]);
@@ -105,7 +93,7 @@ export const GamePhaseManager = () => {
 
   // }, [outpostDeadQuery]);
 
-  // this only needs to be like this for the debug, once the game ships take out the dependency
+  // // this only needs to be like this for the debug, once the game ships take out the dependency
   // useEffect(() => {
   //   const handleKeyPress = (event: KeyboardEvent) => {
   //     if (event.key === 'Escape') {
@@ -139,31 +127,31 @@ export const GamePhaseManager = () => {
   //   });
 
   //   const update = () => {
-  //     const current_pos = getComponentValue(
+  //     const camPos = getComponentValue(
   //       clientComponents.ClientCameraPosition,
   //       getEntityIdFromKeys([BigInt(GAME_CONFIG)])
   //     );
 
-  //     if (!current_pos) {
+  //     if (!camPos) {
   //       console.log("failed");
   //       return;
   //     }
 
-  //     let newX = current_pos.x;
-  //     let newY = current_pos.y;
+  //     let newX = camPos.x;
+  //     let newY = camPos.y;
 
   //     if (keysDown.W) {
-  //       newY = current_pos.y - CAMERA_SPEED;
+  //       newY = camPos.y - CAMERA_SPEED;
   //     }
   //     if (keysDown.A) {
-  //       newX = current_pos.x - CAMERA_SPEED;
+  //       newX = camPos.x- CAMERA_SPEED;
   //     }
 
   //     if (keysDown.S) {
-  //       newY = current_pos.y + CAMERA_SPEED;
+  //       newY = camPos.y + CAMERA_SPEED;
   //     }
   //     if (keysDown.D) {
-  //       newX = current_pos.x + CAMERA_SPEED;
+  //       newX = camPos.x + CAMERA_SPEED;
   //     }
 
   //     if (newX > MAP_WIDTH - camera.phaserCamera.width / currentZoomValue / 2) {
@@ -183,12 +171,23 @@ export const GamePhaseManager = () => {
   //     }
 
   //     if (newX !== prevX || newY !== prevY) {
-
-
-  //       setComponentQuick({ "x": newX, "y": newY, "tile_index": current_pos.tile_index }, [getEntityIdFromKeys([BigInt(GAME_CONFIG)])], "ClientCameraPosition", clientComponents);
+        
+  //       setClientCameraComponent(newX, newY, clientComponents);
 
   //       prevX = newX;
   //       prevY = newY;
+
+  //       const camTileIndex = getComponentValue(
+  //         clientComponents.EntityTileIndex,
+  //         getEntityIdFromKeys([BigInt(GAME_CONFIG)])
+  //       );
+
+  //       const newIndex = getTileIndex(newX,newY);
+
+  //       if (newIndex !== camTileIndex.tile_index)
+  //       {
+  //         setClientCameraEntityIndex(newX, newY, clientComponents)
+  //       }
   //     }
 
   //     animationFrameId = requestAnimationFrame(update);
@@ -208,10 +207,10 @@ export const GamePhaseManager = () => {
 
   return (
     <>
-    <img src="./map_Island.png" alt="" style={{position:'absolute', width:"100%", height:"100%", top:"0", left:"0"}}/>
       <div className="main-page-container-layout">
+        <img style={{position:'absolute', width:"100%", height:"100%", zIndex:"-1"}} src='assets/rev_map_big.png'></img>
         <div className='main-page-topbar'>
-          <TopBarComponent />
+          <TopBarComponent phaseNum={2}/>
         </div>
 
         <div className='main-page-content'>
@@ -220,10 +219,10 @@ export const GamePhaseManager = () => {
               {currentMenuState === MenuState.PROFILE && <ProfilePage setUIState={closePage}/>}
               {currentMenuState === MenuState.RULES && <RulesPage setUIState={closePage} />}
               {currentMenuState === MenuState.SETTINGS && <SettingsPage setMenuState={setCurrentMenuState} />}
-              {currentMenuState === MenuState.TRADES && <TradesPage />}
+              {currentMenuState === MenuState.TRADES && <TradesPage setMenuState={setCurrentMenuState}/>}
               {currentMenuState === MenuState.STATS && <StatsPage setMenuState={setCurrentMenuState} />}
               {currentMenuState === MenuState.REV_JURNAL && <RevenantJurnalPage setMenuState={setCurrentMenuState} />}
-              {/* {currentMenuState === MenuState.WINNER && <WinnerPage setMenuState={setCurrentMenuState} />} */}
+              {currentMenuState === MenuState.WINNER && <WinnerPage setMenuState={setCurrentMenuState} />}
               {currentMenuState === MenuState.Debug && <DebugPage />}
             </div>
           )}

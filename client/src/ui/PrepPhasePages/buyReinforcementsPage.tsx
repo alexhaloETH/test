@@ -1,7 +1,9 @@
 //libs
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PrepPhaseStages } from "./prepPhaseManager";
 import { toast } from 'react-toastify';
+import { PurchaseReinforcementProps } from "../../dojo/types";
+import {getComponentValueStrict} from "@latticexyz/recs";
 
 //styles
 import "./PagesStyles/BuyingPageStyle.css"
@@ -9,6 +11,9 @@ import "./PagesStyles/BuyingPageStyle.css"
 //elements/components
 import { ClickWrapper } from "../clickWrapper";
 import CounterElement from "../Elements/counterElement";
+import { useDojo } from "../../hooks/useDojo";
+import { getEntityIdFromKeys } from "@dojoengine/utils";
+import { GAME_CONFIG } from "../../phaser/constants";
 
 //pages
 
@@ -37,9 +42,45 @@ export const BuyReinforcementPage: React.FC<BuyReinforcementsPageProps> = ({ set
     const [reinforcementNumber, setReinforcementNumber] = useState(2);
     const [priceOfReinforcements, setPriceOfReinforcements] = useState(5);
 
-    const buyReinforcements = async (num: number) => {
+    // const {
+    //     account: { account },
+    //     networkLayer: {
+    //         network: { clientComponents },
+    //         systemCalls : { purchase_reinforcement, get_current_reinforcement_price },
+    //     },
+        
+    // } = useDojo();
 
-    }
+    // need here a useffect for the price of the reinforcements
+
+    // const buyReinforcements = async (num: number) => {
+        
+    //     notify(`Purchasing ${num} Reinforcements...`);
+
+    //     const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
+
+    //     const props: PurchaseReinforcementProps = {
+    //         account: account,
+    //         game_id: clientGameData.current_game_id,
+    //         count: BigInt(num),
+    //     };
+
+    //     await purchase_reinforcement(props);
+    // }
+
+    // useEffect(() => {
+    //     const intervalId = setInterval(call_price_update, 5000);
+    
+    //     // Cleanup the interval on component unmount
+    //     return () => clearInterval(intervalId);
+    //   }, []);
+    
+    // const call_price_update = async () => {
+    //     const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
+
+    //     // const current_price = await get_current_reinforcement_price(clientGameData.current_game_id);
+    //     // console.error(`CALLING THE PRICE FUNCTION, CURRENT PRICE ${current_price}`);
+    // };
 
     return (
         <div className="br-page-container">
@@ -48,7 +89,7 @@ export const BuyReinforcementPage: React.FC<BuyReinforcementsPageProps> = ({ set
             <ClickWrapper className="main-content">
                 <h2 className="main-content-header">BUY REINFORCEMENTS</h2>
                 <CounterElement value={reinforcementNumber} setValue={setReinforcementNumber} />
-                <div className="global-button-style" style={{ width: "fit-content", padding: "5px 10px", fontSize: "1.3cqw" }} onMouseDown={() => { buyReinforcements(reinforcementNumber) }}> Reinforce (Tot: {priceOfReinforcements * reinforcementNumber} $LORDS)</div>
+                <div className="global-button-style" style={{ width: "fit-content", padding: "5px 10px", fontSize: "1.3cqw" }} > Reinforce (Tot: {priceOfReinforcements * reinforcementNumber} $LORDS)</div>
             </ClickWrapper>
 
             <div className="footer-text-section" >

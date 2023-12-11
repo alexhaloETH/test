@@ -1,5 +1,5 @@
 //libs
-import React from "react";
+import React, { useEffect } from "react";
 import { MenuState } from "./gamePhaseManager";
 
 //styles
@@ -34,10 +34,11 @@ import PageTitleElement from "../Elements/pageTitleElement";
     major lords which will be based on the amount of outposts they have (this will not be a query instead just a normal loop)
 
     the lords with the most reinforcements sent to them (this will be a query)
+
+    the lists can be their own comps
+
+there is a specific query to call and to test so to makethe whole sorting on the databsae instead of the client side
 */
-
-
-
 
 
 
@@ -47,6 +48,10 @@ interface StatsPageProps {
 }
 
 export const StatsPage: React.FC<StatsPageProps> = ({ setMenuState }) => {
+
+    const [reloadArrOne, setReloadArrOne] = React.useState<boolean>(false);
+    const [reloadArrTwo, setReloadArrTwo] = React.useState<boolean>(false);
+
     const closePage = () => {
         setMenuState(MenuState.NONE);
     };
@@ -54,6 +59,26 @@ export const StatsPage: React.FC<StatsPageProps> = ({ setMenuState }) => {
     const sortList = () => { };
 
     const refreshList = () => { };
+
+
+    useEffect(() => {
+
+        //reload this data
+        if (reloadArrOne === false)
+        {
+            setReloadArrOne(true);
+
+        }
+
+        //reload this data
+        if (reloadArrTwo === false)
+        {
+            setReloadArrTwo(true);
+        }
+
+
+
+    }, [reloadArrOne, reloadArrTwo]);
 
     return (
         <ClickWrapper className="game-page-container">
