@@ -73,16 +73,16 @@
     width: max-content;
     height: fit-content;
 
-    top: 13%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     
     color: white;
 
     z-index: 3;
-}
 
-.prep-phase-text
-{
     text-align: center;
+
+    font-family: OL;
+    font-weight: 100;
 }

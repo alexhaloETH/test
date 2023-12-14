@@ -139,7 +139,9 @@ export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phase
   
     return (
         <div className="top-bar-container-layout">
-            <div style={{ width: "100%", height: "30%" }}></div>
+            <div style={{ width: "100%", height: "30%",display:"flex", justifyContent:"center", alignItems:"center" }}>
+                <h4 style={{textAlign:"center", color:"white", fontWeight:"100", fontFamily:"OL"}}>THIS WEBSITE IS ONLY A SHOWCASE OF THE UI DESIGN OF THE RISING REVENANT GAME</h4>
+            </div>
             <div className="top-bar-content-section">
                 <div className="left-section">
                     <div className="left-section-image-div">

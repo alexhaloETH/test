@@ -18,9 +18,8 @@ import "./PagesStyles/MainMenuContainerStyles.css"
 //elements/components
 import { TopBarComponent } from '../Components/mainTopBar';
 import { NavbarComponent } from '../Components/navbar';
-// import { OutpostTooltipComponent } from '../Components/outpostToolTip';
+import { OutpostTooltipComponent } from '../Components/outpostToolTip';
 import { JurnalEventComponent } from '../Components/jurnalEventComponent';
-
 
 //pages
 import { ProfilePage } from './profilePage';
@@ -237,7 +236,7 @@ export const GamePhaseManager = () => {
       </div>
 
       {currentMenuState === MenuState.NONE && <JurnalEventComponent setMenuState={setCurrentMenuState} />}
-      {/* {currentMenuState === MenuState.NONE && <OutpostTooltipComponent />} */}
+       {currentMenuState === MenuState.NONE && <OutpostTooltipComponent />}
     </>
   );
 }

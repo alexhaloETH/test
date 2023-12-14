@@ -49,80 +49,123 @@ export const JurnalEventComponent: React.FC<JuornalEventProps> = ({ setMenuState
     // const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
     // const lastEvent = getComponentValue(contractComponents.WorldEvent, getEntityIdFromKeys([BigInt(clientGameData.current_game_id), BigInt(clientGameData.current_event_drawn)]))
 
+    // return (
+    //     <div className="jurnal-event-container">
+    //         this is to check as i dont think it is standardisez
+    //         <ClickWrapper className="title-div-container">
+    //             <h2>
+    //                 REVENANT JOURNAL {" "}
+    //             </h2>
+
+    //             <h2 onMouseDown={() => (openJurnal())} className="close-button">
+    //                 X
+    //             </h2>
+
+    //         </ClickWrapper>
+
+    //         <div className="current-data-container">
+    //             {true === true ? (
+    //                 <>
+    //                     <h3 className="sub-title">Current Event Data #{4}</h3>
+    //                     <h4>Radius: {155}</h4>
+    //                     <h4>Type: Null</h4>
+    //                     <h4>Position: X: {2132}  || Y: {3124}</h4>
+    //                 </>
+    //             ) : (
+    //                 <>
+    //                     <h3 className="sub-title">No event Yet</h3>
+    //                     <h4></h4>
+    //                     <h4></h4>
+    //                     <h4></h4>
+    //                 </>
+    //             )}
+    //         </div>
+
+    //         {true === true && (
+    //             <div className="outpost-hit-data-container">
+    //                 <h3 className="sub-title">Outposts Hit</h3>
+    //                 <ClickWrapper className="outpost-hit-list-container" >
+    //                     <ListElement
+    //                             entityIndex={3 as EntityIndex}
+    //                             contractComponents={5}
+    //                         />
+    //                         <ListElement
+    //                             entityIndex={3 as EntityIndex}
+    //                             contractComponents={5}
+    //                         />
+    //                     {/* {ownOutpost.map((outpostId: EntityIndex) => (
+    //                         <ListElement
+    //                             key={outpostId}
+    //                             entityIndex={getComponentValue(clientComponents.ClientOutpostData, outpostId).id}
+    //                             contractComponents={contractComponents}
+    //                         />
+    //                     ))} */}
+    //                     </ClickWrapper>
+    //             </div>
+    //         )}
+    //     </div>
+    // );
+
+
     return (
         <div className="jurnal-event-container">
-            {/* this is to check as i dont think it is standardisez */}
-            <ClickWrapper className="title-div-container">
-                <h2>
-                    REVENANT JOURNAL {" "}
-                </h2>
-
-                <h2 onMouseDown={() => (openJurnal())} className="close-button">
-                    X
-                </h2>
-
-            </ClickWrapper>
-
-            <div className="current-data-container">
-                {true === true ? (
-                    <>
-                        <h3 className="sub-title">Current Event Data #{4}</h3>
-                        <h4>Radius: {155}</h4>
-                        <h4>Type: Null</h4>
-                        <h4>Position: X: {2132}  || Y: {3124}</h4>
-                    </>
-                ) : (
-                    <>
-                        <h3 className="sub-title">No event Yet</h3>
-                        <h4></h4>
-                        <h4></h4>
-                        <h4></h4>
-                    </>
-                )}
-            </div>
-
-            {true === true && (
-                <div className="outpost-hit-data-container">
-                    <h3 className="sub-title">Outposts Hit</h3>
+            <div className="jurnal-event-component-grid">
+                <div className="jurnal-event-component-grid-title">
+                    <div style={{height:"100%", width:"100%", display:"flex", justifyContent:"flex-start", alignItems:"center"}}>
+                        <h2 style={{fontFamily:"Zelda", fontWeight:"100", fontSize:"1.8vw"}}>REVENANT JOURNAL</h2>
+                    </div>
+                </div>
+                <ClickWrapper className="jurnal-event-component-grid-enlarge center-via-flex">
+                    <img className="pointer" onClick={() => openJurnal()} src="LOGO_WHITE.png" alt="Enlarge" style={{height:"80%", width:"80%"}}/>
+                </ClickWrapper>
+                <div className="jurnal-event-component-grid-event-data">
+                    <h2 style={{fontSize:"1.7vw", marginBottom:"3%"}}>Outpost Event</h2>
+                    <h4 style={{margin:"0px", fontSize:"1.1vw"}}>Radius</h4>
+                    <h4 style={{margin:"0px", fontSize:"1.1vw"}}>Type</h4>
+                    <h4 style={{margin:"0px", fontSize:"1.1vw"}}>Coords</h4>
+                </div>
+                <div className="jurnal-event-component-grid-outpost-data">
+                    <h2 style={{margin:"0px", marginBottom:"2%", fontSize:"1.7vw"}}>Your Outposts Hit</h2>
                     <ClickWrapper className="outpost-hit-list-container" >
                         <ListElement
-                                entityIndex={3 as EntityIndex}
-                                contractComponents={5}
-                            />
-                            <ListElement
-                                entityIndex={3 as EntityIndex}
-                                contractComponents={5}
-                            />
-                            <ListElement
-                                entityIndex={3 as EntityIndex}
-                                contractComponents={0}
-                            />
-                            <ListElement
-                                entityIndex={3 as EntityIndex}
-                                contractComponents={0}
-                            />
-                            <ListElement
-                                entityIndex={3 as EntityIndex}
-                                contractComponents={0}
-                            />
-                            <ListElement
-                                entityIndex={3 as EntityIndex}
-                                contractComponents={5}
-                            />
-                            <ListElement
-                                entityIndex={3 as EntityIndex}
-                                contractComponents={5}
-                            />
-                        {/* {ownOutpost.map((outpostId: EntityIndex) => (
-                            <ListElement
-                                key={outpostId}
-                                entityIndex={getComponentValue(clientComponents.ClientOutpostData, outpostId).id}
-                                contractComponents={contractComponents}
-                            />
-                        ))} */}
-                        </ClickWrapper>
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                        <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                         <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                         <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                         <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                         <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                         <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                         <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                         <ListElement
+                            entityIndex={3 as EntityIndex}
+                            contractComponents={5}
+                        />
+                    </ClickWrapper>
                 </div>
-            )}
+            </div>
         </div>
     );
 };
@@ -152,9 +195,9 @@ const ListElement: React.FC<{ entityIndex: EntityIndex, contractComponents: any 
 
     return (
         <>
-            <h4 style={{ textDecoration: lifes === 0 ? 'line-through' : 'none' }}>
+            <h3 style={{ textDecoration: lifes === 0 ? 'line-through' : 'none' , margin:"0px", fontSize:"1.2vw"}}>
                 Outpost ID: {outpostData.id} || X: {outpostData.x}, Y: {outpostData.y}
-            </h4>
+            </h3>
         </>
     );
 };
