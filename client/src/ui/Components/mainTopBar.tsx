@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Tooltip from '@mui/material/Tooltip';
 
 import "./ComponentsStyles/TopBarStyles.css";
 
@@ -12,7 +13,7 @@ import { useEntityQuery } from "@latticexyz/react";
 import { useDojo } from "../../hooks/useDojo";
 import { getEntityIdFromKeys } from "@dojoengine/utils";
 import { GAME_CONFIG } from "../../phaser/constants";
-import {  checkAndSetPhaseClientSide, fetchGameData, fetchSpecificEvent, setComponentsFromGraphQlEntitiesHM, truncateString } from "../../utils";
+import { checkAndSetPhaseClientSide, fetchGameData, fetchSpecificEvent, setComponentsFromGraphQlEntitiesHM, truncateString } from "../../utils";
 import { ClickWrapper } from "../clickWrapper";
 
 
@@ -27,7 +28,7 @@ interface TopBarPageProps {
     setGamePhase?: () => void;
 }
 
-export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phaseNum}) => {
+export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phaseNum }) => {
 
     const [isloggedIn, setIsLoggedIn] = useState(true);
     const [inGame, setInGame] = useState(1);
@@ -53,11 +54,11 @@ export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phase
     // const clientGameDataQuery = useEntityQuery([Has(clientComponents.ClientGameData)]);
 
     // useEffect(() => {
-        
+
     //     if (phaseNum === 1 && setGamePhase !== undefined)
     //     {
     //         const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, clientGameDataQuery[0]);
-            
+
     //         if (clientGameData.current_game_state === 2)
     //         {
     //             setGamePhase();
@@ -65,11 +66,11 @@ export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phase
     //     }
 
     // }, [clientGameDataQuery]);
-    
+
     // useEffect(() => {
 
     //     const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
-        
+
     //     if (clientGameData.current_game_state === 2)
     //     {
     //       setMaxNumOfOutpost(outpostArray.length);
@@ -81,10 +82,10 @@ export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phase
     // useEffect(() => {
     //     updateFunctions();
     //     const intervalId = setInterval(updateFunctions, 5000);
-    
+
     //     return () => clearInterval(intervalId);
     // }, []);
-    
+
     // const updateFunctions = () => 
     // {   
     //     checkBlockCount();
@@ -94,7 +95,7 @@ export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phase
     // const getGameData = async () => {
     //     //this should query the game stuff dependong on the state
     //     const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([BigInt(GAME_CONFIG)]));
-        
+
     //     const gameDataQuery = await fetchGameData(graphSdk,clientGameData.current_game_id);
     //     setComponentsFromGraphQlEntitiesHM(gameDataQuery,contractComponents,false);
 
@@ -136,36 +137,79 @@ export const TopBarComponent: React.FC<TopBarPageProps> = ({ setGamePhase, phase
     //     const clientGameData = getComponentValueStrict(clientComponents.ClientGameData, getEntityIdFromKeys([GAME_CONFIG]));
     //     checkAndSetPhaseClientSide(clientGameData.current_game_id, blockCount!, contractComponents, clientComponents);
     // };
-  
-    return (
-        <div className="top-bar-container-layout">
-            <div style={{ width: "100%", height: "30%",display:"flex", justifyContent:"center", alignItems:"center" }}>
-                <h4 style={{textAlign:"center", color:"white", fontWeight:"100", fontFamily:"OL"}}>THIS WEBSITE IS ONLY A SHOWCASE OF THE UI DESIGN OF THE RISING REVENANT GAME</h4>
-            </div>
-            <div className="top-bar-content-section">
-                <div className="left-section">
-                    <div className="left-section-image-div">
-                        <div className="logo-img"></div>
-                    </div>
-                    <div className="text-section">
-                        <h4>Jackpot: {Jackpot} $LORDS</h4>
-                    </div>
-                </div>
-                <div className="name-section">
-                    <div className="game-title">Rising Revenant</div>
-                </div>
-                <ClickWrapper className="right-section">
-                    <div className="text-section">
-                        <h4>Revenants Alive: {currentNumOfOutposts}/{maxNumOfOutpost}</h4>
-                        <h4>Reinforcements in game: {reinforcementsInGame}</h4>
-                    </div>
 
-                    {isloggedIn ? 
-                        <h3 onMouseDown={() => {}} style={{fontSize:"1cqw"}}> <img src="argent_logo.png" className="chain-logo" style={{fontSize:"1cqw"}}></img>{truncateString("0x7h387yeh78287he7ge2778d827e78gebd", 5)} 
-                    </h3> : <button>Log in now</button>}
-                    
-                </ClickWrapper>
+    // return (
+    //     <div className="top-bar-container-layout">
+    //         <div style={{ width: "100%", height: "30%",display:"flex", justifyContent:"center", alignItems:"center" }}>
+    //             <h4 style={{textAlign:"center", color:"white", fontWeight:"100", fontFamily:"OL"}}>THIS WEBSITE IS ONLY A SHOWCASE OF THE UI DESIGN OF THE RISING REVENANT GAME</h4>
+    //         </div>
+    //         <div className="top-bar-content-section">
+    //             <div className="left-section">
+    //                 <div className="left-section-image-div">
+    //                     <div className="logo-img"></div>
+    //                 </div>
+    //                 <div className="text-section">
+    //                     <h4>Jackpot: {Jackpot} $LORDS</h4>
+    //                 </div>
+    //             </div>
+    //             <div className="name-section">
+    //                 <div className="game-title">Rising Revenant</div>
+    //             </div>
+    //             <ClickWrapper className="right-section">
+    //                 <div className="text-section">
+    //                     <h4>Revenants Alive: {currentNumOfOutposts}/{maxNumOfOutpost}</h4>
+    //                     <h4>Reinforcements in game: {reinforcementsInGame}</h4>
+    //                 </div>
+
+    //                 {isloggedIn ? 
+    //                     <h3 onMouseDown={() => {}} style={{fontSize:"1cqw"}}> <img src="argent_logo.png" className="chain-logo" style={{fontSize:"1cqw"}}></img>{truncateString("0x7h387yeh78287he7ge2778d827e78gebd", 5)} 
+    //                 </h3> : <button>Log in now</button>}
+
+    //             </ClickWrapper>
+    //         </div>
+    //     </div>
+    // );
+
+    return (
+        <ClickWrapper className="top-bar-grid-container ">
+            <div className="top-bar-grid-game-logo center-via-flex">
+                <img src="LOGO_WHITE.png" className="game-logo" style={{ height: "100%", aspectRatio: "1/1" }}></img>
             </div>
-        </div>
+            <Tooltip title="this is your overall cut so far...">
+                <div className="top-bar-grid-left-text-section center-via-flex">
+                    <div style={{ width: "100%", flex: "1" }} className="center-via-flex">
+                        <div>Jackpot: {Jackpot} $LORDS </div>
+                    </div>
+                    <div style={{ width: "100%", flex: "1" }} className="center-via-flex">
+                        <div>Contribution: 12%</div>
+                    </div>
+                </div>
+            </Tooltip>
+            <div className="top-bar-grid-right-text-section center-via-flex">
+                <div style={{ width: "100%", flex: "1" }} className="center-via-flex">
+                    <div>Revenants Alive: {currentNumOfOutposts}/{maxNumOfOutpost}</div>
+                </div>
+                <div style={{ width: "100%", flex: "1" }} className="center-via-flex">
+                    <div>Reinforcements in game: {reinforcementsInGame}</div>
+                </div>
+            </div>
+            <div className="top-bar-grid-game-written-logo">
+                <div className="center-via-flex" style={{ height: "100%", width: "100%", backgroundColor: "white", color: "black", borderRadius: "10px", padding: "2px 5px", boxSizing: "border-box" }}>
+                    <h2 style={{ fontFamily: "Zelda", fontWeight: "100", fontSize: "2.8vw", whiteSpace: "nowrap" }}>Rising Revenant</h2>
+                </div>
+            </div>
+            <div className="top-bar-grid-address center-via-flex">
+                <div style={{ width: "100%", height: "75%" }} className="center-via-flex">
+                    {isloggedIn ?
+                        <h2 >
+                            <img src="argent_logo.png" className="chain-logo"></img>
+                            {truncateString("0x7h387yeh78287he7ge2778d827e78gebd", 5)}
+                        </h2> :
+                        <h3>
+                            NOT LOGGED IN
+                        </h3>}
+                </div>
+            </div>
+        </ClickWrapper>
     );
 };

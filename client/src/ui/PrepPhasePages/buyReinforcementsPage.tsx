@@ -91,7 +91,7 @@ export const BuyReinforcementPage: React.FC<BuyReinforcementsPageProps> = ({ set
                     <ClickWrapper onMouseDown={() => { setMenuState(PrepPhaseStages.BUY_REIN); }} className="global-button-style"
                             style={{ padding: "5px 10px", fontSize: "1.3cqw" }}>
 
-                        <img className="embedded-text-icon" src="Icons/Symbols/left_arrow.svg" alt="Sort Data" onMouseDown={() => { }} />
+                        <img className="embedded-text-icon" src="Icons/Symbols/left_arrow.svg" alt="Sort Data" onMouseDown={() => {setMenuState(PrepPhaseStages.BUY_REVS) }} />
 
                         Summon more Revenants
                     </ClickWrapper>
